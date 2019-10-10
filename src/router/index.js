@@ -1,23 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Topic from '@/views/Topic'
-import Template from '@/views/Template'
+import routes from './routers'
+import {getToken} from '@/libs/util'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  routes,
   mode: 'history', // 用路径显示代替锚点
-  base: '', // 部署根目录
-  routes: [
-    {
-      path: '/',
-      name: 'Topic',
-      component: Topic
-    },
-    {
-      path: '/template',
-      name: 'Template',
-      component: Template
-    }
-  ]
+  base: '' // 部署根目录
 })
+
+const LOGIN_PAGE_NAME = 'login'
+
+router.beforeEach((to, from, next) => {
+  const token = getToken()
+  if (!token && to.name !== LOGIN_PAGE_NAME) {
+    // 未登录且要跳转的页面不是登录页
+    next({
+      name: LOGIN_PAGE_NAME // 跳转到登录页
+    })
+  } else if (!token && to.name === LOGIN_PAGE_NAME) {
+    // 未登陆且要跳转的页面是登录页
+    next() // 跳转
+  } else if (token && to.name === LOGIN_PAGE_NAME) {
+    // 已登录且要跳转的页面是登录页
+    next({
+      name: homeName // 跳转到homeName页
+    })
+  } else {
+    next()
+  }
+})
+
+export default router

@@ -1,13 +1,17 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import App from './App'
+import CKEditor from '@ckeditor/ckeditor5-vue'
 import router from './router'
+import iView from 'iview'
+
+import 'iview/dist/styles/iview.css'
 
 Vue.config.productionTip = false
-Vue.use(MintUI)
+Vue.use(CKEditor)
+Vue.use(iView)
 
 /* eslint-disable no-new */
 new Vue({

@@ -10,6 +10,7 @@ export default {
   /**
    * @description api请求基础路径
    */
+  homeName: 'home',
   baseUrl: {
     dev: 'http://127.0.0.1:8000',
     pro: 'http://test.social.doutudahui.top'
