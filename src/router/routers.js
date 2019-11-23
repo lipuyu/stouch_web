@@ -1,4 +1,4 @@
-import Topic from '@/views/Topic'
+import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Template from '@/views/Template'
 
@@ -6,7 +6,7 @@ export default [
   {
     path: '/',
     name: 'home',
-    component: Topic
+    component: Home
   },
   {
     path: '/login',

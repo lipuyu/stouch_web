@@ -15,11 +15,7 @@ export default {
       editor: ClassicEditor,
       editorData: '<p>Content of the editor.</p>',
       editorConfig: {
-        language: 'zh-cn',
-        cloudServices: {
-          tokenUrl: 'http://172.16.4.126:8000/appconf/version/late',
-          uploadUrl: 'http://172.16.4.126:8000/storage/image/admin_upload'
-        }
+        language: 'zh-cn'
       }
     }
   },

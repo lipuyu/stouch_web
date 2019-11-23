@@ -1,31 +1,32 @@
 <template>
-  <div>
-    <Card style="width: 350px;display:inline-block;position:relative;vertical-align:middle;line-height:normal;">
-      <p slot="title">欢迎登录</p>
-      <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
-        <FormItem prop="userName">
-          <Input v-model="form.userName" placeholder="请输入用户名">
-            <span slot="prepend">
-              <Icon :size="16" type="ios-person"></Icon>
-            </span>
-          </Input>
-        </FormItem>
-        <FormItem prop="password">
-          <Input type="password" v-model="form.password" placeholder="请输入密码">
-            <span slot="prepend">
-              <Icon :size="14" type="md-lock"></Icon>
-            </span>
-          </Input>
-        </FormItem>
-        <FormItem>
-          <Button @click="handleSubmit" type="primary" long>登录</Button>
-        </FormItem>
-      </Form>
-    </Card>
-  </div>
+  <Card style="width: 350px;display:inline-block;position:relative;vertical-align:middle;line-height:normal;">
+    <p slot="title">欢迎登录</p>
+    <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
+      <FormItem prop="userName">
+        <Input v-model="form.username" placeholder="请输入用户名">
+          <span slot="prepend">
+            <Icon :size="16" type="ios-person"></Icon>
+          </span>
+        </Input>
+      </FormItem>
+      <FormItem prop="password">
+        <Input type="password" v-model="form.password" placeholder="请输入密码">
+          <span slot="prepend">
+            <Icon :size="14" type="md-lock"></Icon>
+          </span>
+        </Input>
+      </FormItem>
+      <FormItem>
+        <Button @click="handleSubmit" type="primary" long>登录</Button>
+      </FormItem>
+    </Form>
+  </Card>
 </template>
 
 <script>
+import { login } from '@/api/user'
+import { setToken } from '@/libs/util'
+
 export default {
   name: 'LoginForm',
   props: {
@@ -49,7 +50,7 @@ export default {
   data () {
     return {
       form: {
-        userName: '',
+        username: '',
         password: ''
       }
     }
@@ -57,7 +58,7 @@ export default {
   computed: {
     rules () {
       return {
-        userName: this.userNameRules,
+        username: this.userNameRules,
         password: this.passwordRules
       }
     }
@@ -66,9 +67,12 @@ export default {
     handleSubmit () {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          this.$emit('on-success-valid', {
-            userName: this.form.userName,
-            password: this.form.password
+          login(this.form).then(res => {
+            const data = res.data
+            setToken(data.data.ticket)
+            this.$router.push({name: 'home'})
+          }).catch(err => {
+            console.log(err)
           })
         }
       })

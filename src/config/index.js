@@ -12,7 +12,11 @@ export default {
    */
   homeName: 'home',
   baseUrl: {
-    dev: 'http://127.0.0.1:8000',
-    pro: 'http://test.social.doutudahui.top'
+    dev: 'http://127.0.0.1:8080',
+    pro: '/'
+  },
+  socketAddr: {
+    dev: 'ws://127.0.0.1:8080/websocket',
+    pro: 'ws://' + window.location.host + '/websocket'
   }
 }
