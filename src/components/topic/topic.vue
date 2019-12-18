@@ -1,46 +1,28 @@
 <template>
   <div>
-    <ckeditor class="ck" :editor="editor" v-model="content" :config="editorConfig"></ckeditor>
+    <Row type="flex">
+      <Col span="2"><Avatar icon="ios-person" size="large" /></Col>
+      <Col span="22" :style="{textAlign: 'justify', paddingLeft: '16px'}" v-html="content"></Col>
+    </Row>
   </div>
 </template>
 
 <script>
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-import '@ckeditor/ckeditor5-build-classic/build/translations/zh-cn'
-
 export default {
   name: 'Topic',
-  model: {
-    prop: 'editorData',
-    event: 'change'
-  },
-  props: {
-    editorData: String
-  },
+  props: ['content'],
   data () {
     return {
-      editor: ClassicEditor,
-      content: this.editorData,
-      editorConfig: {
-        language: 'zh-cn',
-        cloudServices: {
-          uploadUrl: 'http://172.16.4.126:8000/storage/image/admin_upload'
-        }
-      }
-    }
-  },
-  watch: {
-    content: function (newQ, oldQ) {
-      this.$emit('change', newQ)
-    },
-    editorData: function (newQ, oldQ) {
-      this.content = this.editorData
     }
   }
 }
 </script>
 <style>
-  .ck {
-    text-align: justify;
+  p, ul, blockquote {
+    line-height: 1.15em;
+    margin-bottom: .75em;
+  }
+  ul, ol {
+    margin-left: 32px;
   }
 </style>
