@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ckeditor class="ck" :editor="editor" v-model="content" :config="editorConfig"></ckeditor>
+    <ckeditor :editor="editor" v-model="content" :config="editorConfig"></ckeditor>
   </div>
 </template>
 
@@ -40,14 +40,14 @@ export default {
 }
 </script>
 <style>
-  .ck {
+  .ck-editor {
     text-align: justify;
   }
-  p, ul, blockquote {
+  .ck-editor p, .ck-editor ul, .ck-editor blockquote {
     line-height: 1.15em;
     margin-bottom: .3em;
   }
-  ul, ol {
+  .ck-editor ul, .ck-editor ol {
     margin-left: 2em;
   }
 </style>
