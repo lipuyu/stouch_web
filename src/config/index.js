@@ -12,11 +12,21 @@ export default {
    */
   homeName: 'home',
   baseUrl: {
-    dev: 'http://127.0.0.1:8080',
+    dev: 'http://127.0.0.1:8000',
     pro: 'http://www.duanzt.com'
   },
   socketAddr: {
     dev: 'ws://127.0.0.1:8080/websocket',
     pro: 'ws://www.duanzt.com/websocket'
+  },
+  ckUploadServer: {
+    dev: {
+      tokenUrl: 'http://0.0.0.0:8000/storage/token',
+      uploadUrl: 'http://0.0.0.0:8000/storage/picture/editor'
+    },
+    pro: {
+      tokenUrl: 'http://www.duanzt.com/storage/token',
+      uploadUrl: 'http://www.duanzt.com/storage/picture/editor'
+    }
   }
 }

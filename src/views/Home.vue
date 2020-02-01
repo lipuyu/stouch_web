@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Card style="width: 600px; margin: 10px auto" v-bind:key="index" v-for="(content, index) in contents">
-      <topic :style="{marginBottom: '10px'}" :content="content"></topic>
+    <Card style="width: 600px; margin: 0px auto" v-bind:key="index" v-for="(content, index) in contents">
+      <topic :content="content"></topic>
     </Card>
     <Card style="width: 600px;display:inline-block;position:relative;vertical-align:middle;line-height:normal;">
       <editor v-model="editorData"></editor>

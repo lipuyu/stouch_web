@@ -7,6 +7,9 @@
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import '@ckeditor/ckeditor5-build-classic/build/translations/zh-cn'
+import config from '@/config'
+
+const cloudServices = process.env.NODE_ENV === 'development' ? config.ckUploadServer.dev : config.ckUploadServer.pro
 
 export default {
   name: 'Editor',
@@ -23,9 +26,7 @@ export default {
       content: this.editorData,
       editorConfig: {
         language: 'zh-cn',
-        cloudServices: {
-          uploadUrl: 'http://172.16.4.126:8000/storage/image/admin_upload'
-        }
+        cloudServices: cloudServices
       }
     }
   },
