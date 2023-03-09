@@ -6,7 +6,7 @@ const request = axios.create({
   timeout: 2000,
   headers: {
     app: "stouch",
-    ticket: getTicket()
+    ticket: getTicket(),
   },
 });
 

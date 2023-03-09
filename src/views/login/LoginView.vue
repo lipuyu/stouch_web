@@ -22,10 +22,10 @@ const login = () => {
   signIn(loginForm)
     .then((res) => {
       console.log(res);
-      console.log(res.data)
+      console.log(res.data);
       if (res.data.status) {
-        setTicket(res.data.data.ticket)
-        console.log(res.data.data.ticket)
+        setTicket(res.data.data.ticket);
+        console.log(res.data.data.ticket);
       }
     })
     .catch((err) => {
@@ -36,10 +36,5 @@ const login = () => {
 
 <style>
 @media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
 }
 </style>

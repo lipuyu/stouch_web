@@ -1,5 +1,5 @@
 import config from "@/libs/config";
-import { getToken } from "@/libs/util";
+import { getTicket } from "@/libs/util";
 import { useMessageStore } from "@/stores/message";
 
 const socketAddr = config.socketAddr;
@@ -10,7 +10,7 @@ export default function getSocket() {
   // 判断当前浏览器是否支持WebSocket
   if ("WebSocket" in window) {
     websocket = new WebSocket(
-      socketAddr + "?ticket=" + getToken() + "&app=stouch"
+      socketAddr + "?ticket=" + getTicket() + "&app=stouch"
     );
     // 连接发生错误的回调方法
     websocket.onerror = function () {
