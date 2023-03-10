@@ -6,7 +6,7 @@ class BaseConfig {
 
 const configDev: BaseConfig = {
   baseUrl: "/api/",
-  socketAddr: "/api/websocket",
+  socketAddr: "ws://localhost:8000/api/websocket",
   cookieExpires: 86400,
 };
 

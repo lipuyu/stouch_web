@@ -16,16 +16,18 @@
 import { signIn } from "@/views/login/api";
 import { LoginForm } from "@/views/login/class";
 import { setTicket } from "@/libs/util";
+import { useLastRouteStore } from "@/stores/lastRoute";
+import router from "@/router";
 
 let loginForm: LoginForm = new LoginForm();
 const login = () => {
   signIn(loginForm)
     .then((res) => {
-      console.log(res);
-      console.log(res.data);
-      if (res.data.status) {
-        setTicket(res.data.data.ticket);
-        console.log(res.data.data.ticket);
+      if (res.status) {
+        setTicket(res.data.ticket);
+        console.log(res.data.ticket);
+        const { lastRoute } = useLastRouteStore();
+        router.push(lastRoute);
       }
     })
     .catch((err) => {

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { type AxiosResponse } from "axios";
 import { getTicket } from "@/libs/util";
 
 const request = axios.create({
@@ -9,5 +9,14 @@ const request = axios.create({
     ticket: getTicket(),
   },
 });
+
+request.interceptors.response.use(
+  function (response: AxiosResponse) {
+    return response.data;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
 
 export default request;
