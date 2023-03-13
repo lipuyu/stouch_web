@@ -14,26 +14,27 @@ function getSocket(): WebSocket | undefined {
     );
     // 连接发生错误的回调方法
     websocket.onerror = function () {
-      store.online = false
+      store.online = false;
       console.log("error");
     };
     // 连接成功建立的回调方法
     websocket.onopen = function (event) {
-      store.online = true
+      store.online = true;
       console.log("open");
     };
     // 接收到消息的回调方法
     websocket.onmessage = function (event: MessageEvent) {
-      console.log(event.data);
-      store.message = event.data;
+      if (event.data !== "pong") {
+        store.setMessage(JSON.parse(event.data));
+      }
     };
     // 连接关闭的回调方法
     websocket.onclose = function () {
-      store.online = false
+      store.online = false;
       console.log("close");
     };
     window.onbeforeunload = function () {
-      store.online = false
+      store.online = false;
       websocket.close();
     };
     return websocket;
@@ -53,7 +54,7 @@ export function loadWebsocketNow() {
 
 export function loadWebsocket() {
   setInterval(() => {
-    loadWebsocketNow()
+    loadWebsocketNow();
   }, 15000);
 }
 
