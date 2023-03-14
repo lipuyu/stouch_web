@@ -9,12 +9,12 @@ export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url))
-    }
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
   },
   server: {
     proxy: {
-      "/api/": "http://localhost:8000"
-    }
-  }
+      "/api/": "http://localhost:8000",
+    },
+  },
 });
