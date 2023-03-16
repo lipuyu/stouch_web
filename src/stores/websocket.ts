@@ -14,11 +14,14 @@ export const useWebsocketStore = defineStore("websocket", () => {
   const message: Ref<UnwrapRef<LiveMessage>> = ref(new LiveMessage());
   const online: Ref<UnwrapRef<boolean>> = ref(false);
   const liveCount = ref(0);
+
   function setMessage(message1: LiveMessage) {
-    message.value = message1;
     if (message1.code === 0) {
       liveCount.value = (message1.data as LiveCountMessage).count;
+    } else {
+      message.value = message1;
     }
   }
+
   return { message, online, liveCount, setMessage };
 });

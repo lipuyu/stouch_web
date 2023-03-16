@@ -8,8 +8,8 @@ const { increment } = store;
 increment();
 
 class Person {
-  age: number;
-  name: string;
+  public age: number;
+  public name: string;
 
   constructor(age: number, name: string) {
     this.age = age;

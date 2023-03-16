@@ -11,7 +11,7 @@ onMounted(() => {
 
 <template>
   <main>
-    <p :style="{ color: online ? 'green' : 'red'}">
+    <p :style="{ color: online ? 'green' : 'red' }">
       this is a home page. online user count is {{ liveCount }}
     </p>
   </main>
