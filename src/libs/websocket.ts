@@ -1,6 +1,5 @@
 import config from "@/libs/config";
-import { getTicket } from "@/libs/util";
-import { useWebsocketStore } from "@/stores/websocket";
+import { LiveMessage, useWebsocketStore } from "@/stores/websocket";
 
 const socketAddr = config.socketAddr;
 
@@ -9,9 +8,7 @@ function getSocket(): WebSocket | undefined {
   let websocket: WebSocket;
   // 判断当前浏览器是否支持WebSocket
   if ("WebSocket" in window) {
-    websocket = new WebSocket(
-      socketAddr + "?ticket=" + getTicket() + "&app=stouch"
-    );
+    websocket = new WebSocket(socketAddr);
     // 连接发生错误的回调方法
     websocket.onerror = function () {
       store.online = false;
@@ -46,27 +43,24 @@ function getSocket(): WebSocket | undefined {
 let websocket: WebSocket | undefined;
 export function loadWebsocketNow() {
   const { online } = useWebsocketStore();
-  if (getTicket() !== "" && !online) {
+  if (!online) {
     websocket = getSocket();
     console.log("try connect websocket server...");
   }
 }
 
-export function loadWebsocket() {
-  setInterval(() => {
-    loadWebsocketNow();
-  }, 15000);
-}
-
 export function keepLive() {
   setInterval(() => {
-    if (websocket !== undefined) {
+    const { online } = useWebsocketStore();
+    if (online && websocket) {
       websocket.send("ping");
+    } else {
+      loadWebsocketNow();
     }
   }, 30000);
 }
 
-export function sendMessage(message: object): boolean {
+export function sendMessage(message: LiveMessage): boolean {
   if (websocket !== undefined) {
     websocket.send(JSON.stringify(message));
     return true;

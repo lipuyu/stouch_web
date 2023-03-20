@@ -1,7 +1,7 @@
 class BaseConfig {
-  public baseUrl: string | undefined;
-  public socketAddr: string | undefined;
-  public cookieExpires: number | undefined;
+  public baseUrl: string = "/";
+  public socketAddr: string = "";
+  public cookieExpires: number = 0;
 }
 
 const configDev: BaseConfig = {
