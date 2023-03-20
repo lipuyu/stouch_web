@@ -12,7 +12,7 @@ const configDev: BaseConfig = {
 
 const configProd: BaseConfig = {
   baseUrl: "/api/",
-  socketAddr: "/api/websocket",
+  socketAddr: "ws://" + document.location.host + "/api/websocket",
   cookieExpires: 86400,
 };
 
