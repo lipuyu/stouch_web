@@ -12,7 +12,7 @@ export const setTicket = (ticket: any) => {
 };
 export const setApp = () => {
   Cookies.set("app", "stouch");
-}
+};
 
 export const getTicket = (): string => {
   const ticket = Cookies.get(TOKEN_KEY);

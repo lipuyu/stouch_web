@@ -2,11 +2,10 @@
 import { useWebsocketStore } from "@/stores/websocket/websocket";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
-import { keepLive, loadWebsocketNow } from "@/libs/websocket";
+import { loadWebsocketNow } from "@/libs/websocket";
 const { online, liveCount } = storeToRefs(useWebsocketStore());
 onMounted(() => {
   loadWebsocketNow();
-  keepLive();
 });
 </script>
 

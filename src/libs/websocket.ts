@@ -1,5 +1,6 @@
 import config from "@/libs/config";
-import { LiveMessage, useWebsocketStore } from "@/stores/websocket";
+import { useWebsocketStore } from "@/stores/websocket/websocket";
+import type { LiveMessage } from "@/stores/websocket/class";
 
 const socketAddr = config.socketAddr;
 
@@ -15,7 +16,7 @@ function getSocket(): WebSocket | undefined {
       console.log("error");
     };
     // 连接成功建立的回调方法
-    websocket.onopen = function (event) {
+    websocket.onopen = function () {
       store.online = true;
       console.log("open");
     };

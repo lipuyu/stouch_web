@@ -1,14 +1,6 @@
 import { type Ref, ref, type UnwrapRef } from "vue";
 import { defineStore } from "pinia";
-
-export class LiveMessage {
-  public code: number = 0;
-  public data: object = {};
-}
-
-export class LiveCountMessage {
-  public count: number = 0;
-}
+import { LiveMessage, MessageCode } from "@/stores/websocket/class";
 
 export const useWebsocketStore = defineStore("websocket", () => {
   const message: Ref<UnwrapRef<LiveMessage>> = ref(new LiveMessage());
@@ -16,10 +8,14 @@ export const useWebsocketStore = defineStore("websocket", () => {
   const liveCount = ref(0);
 
   function setMessage(message1: LiveMessage) {
-    if (message1.code === 0) {
-      liveCount.value = (message1.data as LiveCountMessage).count;
-    } else {
-      message.value = message1;
+    switch (message1.code) {
+      case MessageCode.LIVE_COUNT: {
+        liveCount.value = message1.data.count;
+        break;
+      }
+      default: {
+        message.value = message1;
+      }
     }
   }
 
