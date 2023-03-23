@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import { useWebsocketStore } from "@/stores/websocket/websocket";
+import { useUserStore } from "@/stores/user";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
-import { loadWebsocketNow } from "@/libs/websocket";
-const { online, liveCount } = storeToRefs(useWebsocketStore());
+import { getCurrentUser } from "@/components/user/api";
+const store = useUserStore();
+const { user } = storeToRefs(store);
 onMounted(() => {
-  loadWebsocketNow();
+  if (store.user.id === 0) {
+    getCurrentUser().then((res) => {
+      if (res.status) {
+        store.user = res.data.user;
+      }
+    });
+  }
 });
 </script>
 
 <template>
   <main>
-    <p :style="{ color: online ? 'green' : 'red' }">
-      this is a home page. online user count is {{ liveCount }}
+    <p>
+      {{ user.avatar }}
     </p>
   </main>
 </template>

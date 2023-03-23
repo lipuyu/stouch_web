@@ -1,13 +1,15 @@
-import { ref, computed } from "vue";
+import { ref, type Ref, type UnwrapRef } from "vue";
 import { defineStore } from "pinia";
 
+export class User {
+  public id: number = 0;
+  public username: string = "";
+  public avatar: number = 0;
+  public gender: number = 0;
+  public birthday: string = "";
+}
+
 export const useUserStore = defineStore("user", () => {
-  const user = ref(0);
-  const doubleCount = computed(() => user.value * 2);
-
-  function increment() {
-    user.value++;
-  }
-
-  return { user, doubleCount, increment };
+  const user: Ref<UnwrapRef<User>> = ref(new User());
+  return { user };
 });
