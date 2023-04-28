@@ -30,7 +30,7 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
   const ticket: string = getTicket();
   const store = useLastRouteStore();
   if (ticket !== "") {
