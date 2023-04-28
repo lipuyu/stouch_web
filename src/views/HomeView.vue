@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { useWebsocketStore } from "@/stores/websocket/websocket";
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { keepLive, loadWebsocketNow } from "@/libs/websocket";
 import UserAvatar from "@/components/user/UserAvatar.vue";
 import { useUserStore } from "@/stores/user";
 import { getCurrentUser } from "@/components/user/api";
-import { useConfStore } from "@/stores/activeConfig";
+import VoteComponent from "@/components/live/VoteComponent.vue";
+import { loadActiveConf } from "@/libs/activeConfig";
 
 const { online, liveCount } = storeToRefs(useWebsocketStore());
-const { loadActiveConf } = useConfStore();
 const userStore = useUserStore();
 const { user } = storeToRefs(userStore);
 onMounted(() => {
@@ -24,13 +24,16 @@ onMounted(() => {
   }
   loadActiveConf();
 });
+let votes = ref([
+  { id: 1, desc: "投票1", count: 10 },
+  { id: 1, desc: "投票2", count: 5 },
+]);
 </script>
 
 <template>
   <main>
-    <p>
-      this is a home page. online user count is {{ liveCount }}
-    </p>
+    <p>this is a home page. online user count is {{ liveCount }}</p>
     <user-avatar :avatar="user.avatar" :online="online"></user-avatar>
+    <vote-component :votes="votes"></vote-component>
   </main>
 </template>

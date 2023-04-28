@@ -1,37 +1,43 @@
 <script setup lang="ts">
-import { useConfStore } from "@/stores/activeConfig";
-import { storeToRefs } from "pinia";
+import defaultImg from "@/assets/default.png";
+import { getActiveConf } from "@/libs/activeConfig";
 
-const { activeConfig } = storeToRefs(useConfStore());
+const activeConfig = getActiveConf();
 
 defineProps<{
   avatar: string;
   online: boolean;
 }>();
+
+function loadError(e: any) {
+  if (e.target.src !== defaultImg) {
+    e.target.src = defaultImg;
+  }
+}
 </script>
 
 <template>
-  <div class="avatar" :style="{ borderColor: online ? 'green' : 'gray' }">
+  <div class="user-avatar" :style="{ borderColor: online ? 'green' : 'gray' }">
     <img
       width="48"
       height="48"
-      :src="activeConfig.cdn + avatar"
+      :src="avatar ? activeConfig.cdn + avatar : ''"
       alt="avatar"
+      @error="loadError"
     />
     <div class="mask" v-show="!online"></div>
   </div>
 </template>
 
 <style>
-img {
+.user-avatar img {
   border-radius: 50%;
   position: absolute;
   top: 0;
   left: 0;
-  /*filter: grayscale(100%);*/
 }
 
-.avatar {
+.user-avatar {
   height: 52px;
   width: 52px;
   border-radius: 50%;
@@ -40,7 +46,7 @@ img {
   position: relative;
 }
 
-.mask {
+.user-avatar .mask {
   height: 48px;
   width: 48px;
   top: 0;

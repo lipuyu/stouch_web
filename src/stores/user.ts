@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 export class User {
   public id: number = 0;
   public username: string = "";
-  public avatar: number = 0;
+  public avatar: string = "";
   public gender: number = 0;
   public birthday: string = "";
 }
