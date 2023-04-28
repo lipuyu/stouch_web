@@ -2,15 +2,14 @@ import axios from "@/libs/api.request";
 
 const key: string = "activeConfig";
 
-export function loadActiveConf() {
+export async function loadActiveConf() {
   const activeConfString = localStorage.getItem(key);
   if (
     !activeConfString ||
     JSON.parse(activeConfString).expireTime < Math.floor(Date.now() / 1000)
   ) {
-    axios.get("/appconf").then((res) => {
-      localStorage.setItem(key, JSON.stringify(res.data));
-    });
+    const res = await axios.get("/appconf");
+    localStorage.setItem(key, JSON.stringify(res.data));
   }
 }
 

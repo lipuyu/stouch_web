@@ -47,10 +47,11 @@ export function loadWebsocketNow() {
   if (!online) {
     websocket = getSocket();
     console.log("try connect websocket server...");
+    keepLive();
   }
 }
 
-export function keepLive() {
+function keepLive() {
   setInterval(() => {
     const { online } = useWebsocketStore();
     if (online && websocket) {

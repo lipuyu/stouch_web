@@ -4,7 +4,7 @@ import AboutView from "@/views/AboutView.vue";
 import LoginView from "@/views/login/LoginView.vue";
 import { getTicket } from "@/libs/util";
 import { useLastRouteStore } from "@/stores/lastRoute";
-import { loadActiveConf } from "@/libs/activeConfig";
+import init from "@/libs/init";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,11 +30,11 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to) => {
+router.beforeEach(async (to) => {
   const ticket: string = getTicket();
   const store = useLastRouteStore();
   if (ticket !== "") {
-    loadActiveConf();
+    await init();
   }
   if (ticket === "" && to.name !== "login") {
     store.lastRoute = to;
