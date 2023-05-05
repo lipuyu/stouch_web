@@ -1,14 +1,20 @@
 <template>
   <div>
-    <div>
-      <span>用户名:</span><input type="text" v-model="loginForm.username" />
-    </div>
-    <div>
-      <span>密码:</span><input type="password" v-model="loginForm.password" />
-    </div>
-    <div>
-      <button @click="login">登录</button>
-    </div>
+    <form>
+      <ul>
+        <li>
+          <label>用户名:</label>
+          <input type="text" v-model="loginForm.username" />
+        </li>
+        <li>
+          <label>密码:</label>
+          <input type="password" v-model="loginForm.password" />
+        </li>
+        <li>
+          <button @click="login">登录</button>
+        </li>
+      </ul>
+    </form>
   </div>
 </template>
 
