@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Vote from "./vote.class";
+import type Vote from "./vote.class";
 import { computed } from "vue";
 
 const props = defineProps<{
