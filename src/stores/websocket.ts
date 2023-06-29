@@ -1,6 +1,6 @@
 import { type Ref, ref, type UnwrapRef } from "vue";
 import { defineStore } from "pinia";
-import { LiveMessage, MessageCode } from "@/stores/websocket/class";
+import { LiveMessage, MessageCode } from "@/libs/websocket/class";
 
 export const useWebsocketStore = defineStore("websocket", () => {
   const message: Ref<UnwrapRef<LiveMessage>> = ref(new LiveMessage());

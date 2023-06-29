@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useWebsocketStore } from "@/stores/websocket/websocket";
+import { useWebsocketStore } from "@/stores/websocket";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import UserAvatar from "@/components/user/UserAvatar.vue";

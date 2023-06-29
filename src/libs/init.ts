@@ -1,5 +1,5 @@
 import { loadActiveConf } from "@/libs/activeConfig";
-import { loadWebsocketNow } from "@/libs/websocket";
+import { loadWebsocketNow } from "@/libs/websocket/websocket";
 import { getCurrentUser } from "@/components/user/api";
 import { useUserStore } from "@/stores/user";
 

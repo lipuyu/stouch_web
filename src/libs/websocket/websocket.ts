@@ -1,6 +1,6 @@
 import config from "@/libs/config";
-import { useWebsocketStore } from "@/stores/websocket/websocket";
-import type { LiveMessage } from "@/stores/websocket/class";
+import { useWebsocketStore } from "@/stores/websocket";
+import type { LiveMessage } from "@/libs/websocket/class";
 
 const socketAddr = config.socketAddr;
 
