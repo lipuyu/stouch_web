@@ -11,7 +11,7 @@
           <input type="password" v-model="loginForm.password" />
         </li>
         <li>
-          <button @click="login">登录</button>
+          <button @click="login" type="button">登录</button>
         </li>
       </ul>
     </form>
@@ -31,7 +31,6 @@ const login = () => {
     .then((res) => {
       if (res.status) {
         setTicket(res.data.ticket);
-        console.log(res.data.ticket);
         const { lastRoute } = useLastRouteStore();
         router.push(lastRoute);
       }
