@@ -1,24 +1,31 @@
 <script setup lang="ts">
 import defaultImg from "@/assets/default.png";
 import { getActiveConf } from "@/libs/activeConfig";
-import { ref, watch } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useWebsocketStore } from "@/stores/websocket";
 import { MessageCode } from "@/libs/websocket/class";
 import { LiveStatusMsg } from "./user.class";
-
-const activeConfig = getActiveConf();
+import { foucsUser, unfoucsUser } from "@/components/user/api";
 
 const props = defineProps<{
   avatar: string;
   userId: number;
 }>();
 
+const activeConfig = getActiveConf();
 const online = ref<boolean>(false);
-
 const { message } = storeToRefs(useWebsocketStore());
 
-watch(message, (newValue, oldValue) => {
+onMounted(async () => {
+  foucsUser({ userId: props.userId }).then(() => {});
+});
+
+onUnmounted(async () => {
+  unfoucsUser({ userId: props.userId }).then(() => {});
+});
+
+watch(message, (newValue) => {
   if (newValue.code === MessageCode.LIVE_STATUS) {
     let liveStatusMsg: LiveStatusMsg = newValue.data;
     if (props.userId === liveStatusMsg.userId) {

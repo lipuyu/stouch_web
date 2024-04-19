@@ -5,6 +5,7 @@ import { computed } from "vue";
 const props = defineProps<{
   votes: Vote[];
 }>();
+
 const total = computed(() =>
   props.votes.map((x) => x.count).reduce((x, y) => x + y)
 );

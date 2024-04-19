@@ -9,15 +9,14 @@ import { useUserStore } from "@/stores/user";
 export default async function init() {
   // 加载配置
   await loadActiveConf();
-  // 连接websocket并保活
-  loadWebsocketNow();
   // 加载用户信息
   const userStore = useUserStore();
   if (userStore.user.id === 0) {
-    getCurrentUser().then((res) => {
-      if (res.status) {
-        userStore.user = res.data.user;
-      }
-    });
+    const res: any = await getCurrentUser();
+    if (res.status) {
+      userStore.user = res.data.user;
+      // 连接websocket并保活
+    }
+    loadWebsocketNow();
   }
 }
