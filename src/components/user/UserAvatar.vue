@@ -18,7 +18,9 @@ const online = ref<boolean>(false);
 const { message } = storeToRefs(useWebsocketStore());
 
 onMounted(async () => {
-  foucsUser({ userId: props.userId }).then(() => {});
+  foucsUser({ userId: props.userId }).then((res) => {
+    online.value = res.data.status
+  });
 });
 
 onUnmounted(async () => {
@@ -29,7 +31,7 @@ watch(message, (newValue) => {
   if (newValue.code === MessageCode.LIVE_STATUS) {
     let liveStatusMsg: LiveStatusMsg = newValue.data;
     if (props.userId === liveStatusMsg.userId) {
-      online.value = liveStatusMsg.status
+      online.value = liveStatusMsg.status;
     }
   }
 });
