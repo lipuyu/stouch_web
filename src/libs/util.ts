@@ -11,7 +11,7 @@ export const setTicket = (ticket: any) => {
   Cookies.set(TOKEN_KEY, ticket, { expires: cookieExpires });
 };
 export const setApp = () => {
-  Cookies.set("app", "stouch", {domain: "localhost"});
+  Cookies.set("app", "stouch");
 };
 
 export const getTicket = (): string => {

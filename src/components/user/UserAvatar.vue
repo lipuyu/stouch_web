@@ -5,7 +5,7 @@ import { onMounted, onUnmounted, ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useWebsocketStore } from "@/stores/websocket";
 import { MessageCode } from "@/libs/websocket/class";
-import { LiveStatusMsg } from "./user.class";
+import type { LiveStatusMsg } from "./user.class";
 import { foucsUser, unfoucsUser } from "@/components/user/api";
 
 const props = defineProps<{
