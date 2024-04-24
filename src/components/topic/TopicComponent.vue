@@ -14,15 +14,11 @@ const text = ref("吃面不加蛋是否违规？吃面不加蛋是否违规？�
       <user-avatar :avatar="''" :userId="2"></user-avatar>
     </div>
     <div>
-      <div>
+      <div class="user-message">
         <strong>话茬用户</strong>
       </div>
-      <div>
-        <p><strong>话茬用户</strong>话茬用户{{ text }}</p>
-        <p>
-          ... the most important rule, the rule you can never forget, no matter how much he cries, no matter how much he begs:
-          <strong>never feed him after midnight</strong>.
-        </p>
+      <div class="content">
+        <p>{{ text }}</p>
       </div>
     </div>
   </div>
@@ -32,5 +28,13 @@ const text = ref("吃面不加蛋是否违规？吃面不加蛋是否违规？�
 .topic_com {
   display: grid;
   grid-template-columns: 54px 1fr;
+}
+.topic_com .user-message {
+  margin-top: 3px;
+}
+
+.topic_com .content {
+  border-width: 1px;
+  border-style: solid;
 }
 </style>
