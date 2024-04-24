@@ -11,7 +11,7 @@ const userStore = useUserStore();
 const { user } = storeToRefs(userStore);
 let votes = ref([
   { id: 1, desc: "投票1", count: 10 },
-  { id: 1, desc: "投票2", count: 5 }
+  { id: 1, desc: "投票2", count: 5 },
 ]);
 
 const a = ref("111");
@@ -20,14 +20,13 @@ const click = () => {
   a.value = "hello world!!!";
   console.log(a);
 };
-
 </script>
 
 <template>
   <main>
     <p>this is a home page. online user count is {{ liveCount }}</p>
-    <user-avatar :avatar="user.avatar" :userId="user.id"></user-avatar>
     <user-avatar :avatar="user.avatar" :userId="2"></user-avatar>
+    <user-avatar :avatar="''" :userId="3"></user-avatar>
     <vote-component :votes="votes"></vote-component>
     <p>{{ a }}</p>
     <button @click="click">点一下</button>

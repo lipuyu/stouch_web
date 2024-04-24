@@ -19,7 +19,7 @@ const { message } = storeToRefs(useWebsocketStore());
 
 onMounted(async () => {
   foucsUser({ userId: props.userId }).then((res) => {
-    online.value = res.data.status
+    online.value = res.data.status;
   });
 });
 
