@@ -36,5 +36,6 @@ const text = ref("吃面不加蛋是否违规？吃面不加蛋是否违规？�
 .topic_com .content {
   border-width: 1px;
   border-style: solid;
+  border-radius: 3px;
 }
 </style>
