@@ -46,8 +46,8 @@ function loadError(e: any) {
 <template>
   <div class="user-avatar" :style="{ borderColor: online ? 'green' : 'gray' }">
     <img
-      width="48"
-      height="48"
+      width="38"
+      height="38"
       :src="avatar ? activeConfig.cdn + avatar : ''"
       alt="avatar"
       @error="loadError"
@@ -65,8 +65,8 @@ function loadError(e: any) {
 }
 
 .user-avatar {
-  height: 52px;
-  width: 52px;
+  height: 42px;
+  width: 42px;
   border-radius: 50%;
   border-width: 2px;
   border-style: solid;
@@ -74,8 +74,8 @@ function loadError(e: any) {
 }
 
 .user-avatar .mask {
-  height: 48px;
-  width: 48px;
+  height: 38px;
+  width: 38px;
   top: 0;
   left: 0;
   border-radius: 50%;

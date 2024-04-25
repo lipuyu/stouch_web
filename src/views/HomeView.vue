@@ -10,5 +10,6 @@ const { liveCount } = storeToRefs(useWebsocketStore());
   <main>
     <p>this is a home page. online user count is {{ liveCount }}</p>
     <topic-component></topic-component>
+    <topic-component></topic-component>
   </main>
 </template>
