@@ -3,10 +3,14 @@ import UserAvatar from "@/components/user/UserAvatarComponent.vue";
 import { ref } from "vue";
 import { getBeautifyTime } from "@/libs/util";
 
-const text = ref("吃面不加蛋是否违规？吃面不加蛋是否违规？？吃面不加蛋是否违规？" +
-  "吃面不加蛋是否违规？？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？" +
-  "吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？" +
-  "吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？");
+const text = ref(
+  "吃面不加蛋是否违规？吃面不加蛋是否违规？？吃面不加蛋是否违规？" +
+    "吃面不加蛋是否违规？？吃面不加蛋是否违规？吃面不加蛋是否违规？" +
+    "吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？" +
+    "吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？" +
+    "吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？" +
+    "吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？"
+);
 </script>
 
 <template>
@@ -17,9 +21,8 @@ const text = ref("吃面不加蛋是否违规？吃面不加蛋是否违规？�
     </div>
     <div>
       <div class="user-message">
-        <strong>话茬用户</strong>·{{
-          getBeautifyTime(Date.now() - 86400 * 1000 * 31)
-        }}
+        <strong>话茬用户</strong>
+        <small>·{{ getBeautifyTime(Date.now() - 3600 * 1000 * 3) }}</small>
       </div>
       <div class="content">
         <p>{{ text }}</p>
