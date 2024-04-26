@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import UserAvatar from "@/components/user/UserAvatarComponent.vue";
 import { ref } from "vue";
+import { getBeautifyTime } from "@/libs/util";
 
 const text = ref("吃面不加蛋是否违规？吃面不加蛋是否违规？？吃面不加蛋是否违规？" +
   "吃面不加蛋是否违规？？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？吃面不加蛋是否违规？" +
@@ -9,18 +10,20 @@ const text = ref("吃面不加蛋是否违规？吃面不加蛋是否违规？�
 </script>
 
 <template>
-  <hr/>
+  <hr />
   <div class="topic_com">
     <div>
       <user-avatar class="avatar" :avatar="''" :userId="2"></user-avatar>
     </div>
     <div>
       <div class="user-message">
-        <strong>话茬用户</strong>
+        <strong>话茬用户</strong>·{{
+          getBeautifyTime(Date.now() - 86400 * 1000 * 31)
+        }}
       </div>
       <div class="content">
         <p>{{ text }}</p>
-        <p>{{text}}</p>
+        <p>{{ text }}</p>
       </div>
     </div>
   </div>
