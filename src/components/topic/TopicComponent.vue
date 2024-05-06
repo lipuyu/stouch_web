@@ -15,7 +15,7 @@ const text = ref(
 
 <template>
   <hr />
-  <div class="topic_com">
+  <div class="topic-com">
     <div>
       <user-avatar class="avatar" :avatar="''" :userId="2"></user-avatar>
     </div>
@@ -33,22 +33,22 @@ const text = ref(
 </template>
 
 <style scoped>
-.topic_com {
+.topic-com {
   display: grid;
   grid-template-columns: 54px 1fr;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.topic_com .user-message {
+.topic-com .user-message {
   font-size: 14px;
 }
 
-.topic_com .content p + p {
+.topic-com .content p + p {
   margin-top: 8px;
 }
 
-.topic_com .avatar {
+.topic-com .avatar {
   margin: auto;
 }
 

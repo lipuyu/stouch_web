@@ -5,6 +5,7 @@ import LoginView from "@/views/login/LoginView.vue";
 import { getTicket } from "@/libs/util";
 import { useLastRouteStore } from "@/stores/lastRoute";
 import init from "@/libs/init";
+import CalendarView from "@/views/calendar/CalendarView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => AboutView,
+    },
+    {
+      path: "/calendar",
+      name: "calendar",
+      component: () => CalendarView,
     },
   ],
 });
