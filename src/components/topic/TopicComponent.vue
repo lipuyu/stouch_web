@@ -52,11 +52,4 @@ const text = ref(
 .topic-com .avatar {
   margin: auto;
 }
-
-/*.topic_com .content {*/
-/*  border-width: 1px;*/
-/*  border-style: solid;*/
-/*  border-radius: 3px;*/
-/*  margin-top: 3px;*/
-/*}*/
 </style>
