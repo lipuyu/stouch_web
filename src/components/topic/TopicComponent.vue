@@ -36,16 +36,17 @@ const text = ref(
 .topic-com {
   display: grid;
   grid-template-columns: 54px 1fr;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 9px;
+  margin-bottom: 11px;
 }
 
 .topic-com .user-message {
   font-size: 14px;
+  height: 22px;
 }
 
 .topic-com .content p + p {
-  margin-top: 8px;
+  margin-top: 11px;
 }
 
 .topic-com .avatar {

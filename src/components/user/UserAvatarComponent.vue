@@ -1,3 +1,15 @@
+<template>
+  <div class="user-avatar" :style="{ borderColor: online ? 'green' : 'gray' }">
+    <img
+      width="38"
+      height="38"
+      :src="avatar ? activeConfig.cdn + avatar : ''"
+      alt="avatar"
+      @error="loadError"
+    />
+    <div class="mask" v-show="!online"></div>
+  </div>
+</template>
 <script setup lang="ts">
 import defaultImg from "@/assets/default.png";
 import { getActiveConf } from "@/libs/activeConfig";
@@ -43,19 +55,6 @@ function loadError(e: any) {
 }
 </script>
 
-<template>
-  <div class="user-avatar" :style="{ borderColor: online ? 'green' : 'gray' }">
-    <img
-      width="38"
-      height="38"
-      :src="avatar ? activeConfig.cdn + avatar : ''"
-      alt="avatar"
-      @error="loadError"
-    />
-    <div class="mask" v-show="!online"></div>
-  </div>
-</template>
-
 <style>
 .user-avatar img {
   border-radius: 50%;
@@ -65,8 +64,8 @@ function loadError(e: any) {
 }
 
 .user-avatar {
-  height: 42px;
-  width: 42px;
+  height: 44px;
+  width: 44px;
   border-radius: 50%;
   border-width: 2px;
   border-style: solid;
@@ -74,8 +73,8 @@ function loadError(e: any) {
 }
 
 .user-avatar .mask {
-  height: 38px;
-  width: 38px;
+  height: 40px;
+  width: 40px;
   top: 0;
   left: 0;
   border-radius: 50%;
