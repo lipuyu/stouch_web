@@ -62,12 +62,10 @@ const text = ref(
 
 .footer {
   display: flex;
-  height: 33px;
+  height: 44px;
   align-items: center;
   justify-content: end;
   font-size: 14px;
-  margin-top: 5px;
-  margin-bottom: 6px;
 }
 
 .footer button {
