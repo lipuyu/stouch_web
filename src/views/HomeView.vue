@@ -15,7 +15,10 @@ import TopicComponent from "@/components/topic/TopicComponent.vue";
 const { liveCount } = storeToRefs(useWebsocketStore());
 </script>
 <style scoped>
+main {
+  border: darkgray 2px solid;
+}
 p {
-  margin-bottom: 11px;
+  height: 20px;
 }
 </style>
