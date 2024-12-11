@@ -16,9 +16,9 @@ const { liveCount } = storeToRefs(useWebsocketStore());
 </script>
 <style scoped>
 main {
-  border: darkgray 2px solid;
+  border: darkgray 1px solid;
 }
 p {
-  height: 20px;
+  height: 32px;
 }
 </style>

@@ -14,6 +14,7 @@ const text = ref(
 </script>
 
 <template>
+  <hr />
   <div class="topic-com">
     <div>
       <user-avatar class="avatar" :avatar="''" :userId="2"></user-avatar>
@@ -45,6 +46,7 @@ const text = ref(
 .topic-com {
   display: grid;
   grid-template-columns: 54px 1fr;
+  margin-top: 9px;
 }
 
 .topic-com .user-message {
